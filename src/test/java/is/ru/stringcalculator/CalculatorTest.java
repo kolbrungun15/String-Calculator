@@ -1,10 +1,15 @@
 package is.ru.stringcalculator;
 
 import static org.junit.Assert.assertEquals;
-import org.junit.test;
+import org.junit.Test;
 public class CalculatorTest {
-	@test
+	@Test
 	public void testEmptyString() {
 		assertEquals(0, Calculator.add(""));
+	}
+
+	@Test 
+	public void testOneNumber(){
+		assertEquals(0, Calculator.add("1"));
 	}
 }
