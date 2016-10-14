@@ -48,7 +48,7 @@ public class CalculatorTest {
 
 	@Test
 	public void TestDelimite(){
-		assertEquals(3, Calculator.add("//;\n1;2"));
+		assertEquals(2, Calculator.add("//;1;2"));
 	}
 
 }

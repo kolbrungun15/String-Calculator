@@ -7,10 +7,11 @@ public class Calculator {
 			return 0;
 
 		if(text.contains("\n"))
-			text = text.replace("\n" , ",");
+			text = text.replaceAll("\n" , ",");
 
 		throwExceptionIfNegative(text);
 		text = BigNumbers(text);
+		text = NewDelimeter(text);
 		
 		return sum(splitText(text));
 	}
@@ -63,5 +64,16 @@ public class Calculator {
 		    }
 		}
 		return newnumber.toString();
+	}
+
+	private static String NewDelimeter(String text){
+		
+		if(text.contains("//")){
+			String temp = text.substring(2,3);
+			text = text.replaceAll(temp, ",");
+			text = text.replaceFirst("//" , "");
+			text = text.replaceFirst(",", "");
+		}
+		return text;
 	}
 }
