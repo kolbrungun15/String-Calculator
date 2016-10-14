@@ -42,8 +42,13 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void RemoveBigNumbers(){
+	public void TestBigNumbers(){
 		assertEquals(2, Calculator.add("1002,2"));
+	}
+
+	@Test
+	public void TestDelimite(){
+		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
 
 }

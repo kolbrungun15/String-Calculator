@@ -10,7 +10,7 @@ public class Calculator {
 			text = text.replace("\n" , ",");
 
 		throwExceptionIfNegative(text);
-		text = removeBigNumbers(text);
+		text = BigNumbers(text);
 		
 		return sum(splitText(text));
 	}
@@ -33,23 +33,35 @@ public class Calculator {
 
 	//Þarf að útfæra að hann sýni hvaða tölur eru negatívar
 	private static void throwExceptionIfNegative(String text) {
-    String[] negatives = splitText(text);
+    String negatives = "";
     if (text.contains("-")) {
-        throw new IllegalArgumentException("Negative numbers not allowed: "); 
-        //+ extractNegativeNumbers(negatives)
+        negatives = extractNegativeNumbers(text);
+        throw new IllegalArgumentException("Negative numbers not allowed: " + negatives); 
     	}
 
     }
+   private static String extractNegativeNumbers(String negatives){
+    	String [] arr = splitText(negatives);
+    	String negativeNumbers = "";
+    	for(String numb : arr){
+    		if(toInt(numb) < 0){
+    			negativeNumbers += numb + ",";
+    		}
+    	}
 
-    private static String removeBigNumbers(String text){
+    	return negativeNumbers;
+    }
+
+    private static String BigNumbers(String text){
 
 		StringBuilder newnumber = new StringBuilder();
 		String[] oldnumber = splitText(text);
 		for(String numb : oldnumber){
 		    if (toInt(numb) < 1000){
 		    	newnumber.append(numb);
-		    	newnumber.append(",");}
-			}
+		    	newnumber.append(",");
+		    }
+		}
 		return newnumber.toString();
 	}
 }
